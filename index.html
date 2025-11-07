@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Wisdom Legacy App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-container">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30 5C16.215 5 5 16.215 5 30C5 43.785 16.215 55 30 55C43.785 55 55 43.785 55 30C55 16.215 43.785 5 30 5Z" stroke="#808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 15V30L37.5 37.5" stroke="#808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h1 class="logo-text">Interactive Wisdom Legacy</h1>
+                <p class="logo-subtitle">บริการบันทึกและเก็บมรดกทางความทรงจำ</p>
+            </div>
+
+            <div class="welcome-message">
+                <h2>ยินดีต้อนรับสู่</h2>
+                <p class="family-name">คลังมรดกของตระกูลพรมบุรี</p>
+            </div>
+
+            <div class="login-section">
+                <div class="input-group">
+                    <label for="email">อีเมล</label>
+                    <input type="email" id="email" placeholder="your@email.com" autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label for="password">รหัสผ่าน</label>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                </div>
+                <button class="btn-primary" id="login-btn">เข้าสู่คลังมรดก</button>
+            </div>
+
+            <div class="welcome-footer">
+                <p>ภูมิปัญญาของครอบครัวคุณจะถูกเก็บรักษาไว้อย่างปลอดภัยอยูาเสมอ</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div id="chat-screen" class="screen">
+        <!-- Sidebar Menu -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>คลังมรดก</h3>
+                <button class="close-sidebar" id="close-sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18" stroke-width="2"/>
+                        <line x1="6" y1="6" x2="18" y2="18" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>หัวข้อ</h4>
+                <div class="topic-list">
+                    <button class="topic-item" data-topic="business">
+                        <span class="topic-icon">💼</span>
+                        <span>ธุรกิจและอาชีพ</span>
+                    </button>
+                    <button class="topic-item" data-topic="family">
+                        <span class="topic-icon">👨‍👩‍👧‍👦</span>
+                        <span>คุณค่าครอบครัว</span>
+                    </button>
+                    <button class="topic-item" data-topic="life">
+                        <span class="topic-icon">🌱</span>
+                        <span>บทเรียนชีวิต</span>
+                    </button>
+                    <button class="topic-item" data-topic="challenges">
+                        <span class="topic-icon">⛰️</span>
+                        <span>การฝ่าฟันอุปสรรค</span>
+                    </button>
+                    <button class="topic-item" data-topic="wisdom">
+                        <span class="topic-icon">📜</span>
+                        <span>ปรัชญาและภูมิปัญญา</span>
+                    </button>
+                    <button class="topic-item" data-topic="memories">
+                        <span class="topic-icon">💭</span>
+                        <span>ความทรงจำอันล้ำค่า</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="logout-btn">ออกจากระบบ</button>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-container">
+            <!-- Header -->
+            <div class="chat-header">
+                <button class="menu-toggle" id="menu-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                        <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                        <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                    </svg>
+                </button>
+                <div class="ancestor-info">
+                    <div class="ancestor-avatar">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=Sakda&backgroundColor=c0aede,d1d4f9&radius=50" alt="คุณปู่ศักดา">
+                    </div>
+                    <div class="ancestor-details">
+                        <h2 class="ancestor-name">อากงอ้น</h2>
+                        <span class="archive-status">
+                            <span class="status-indicator"></span>
+                            เชื่อมต่อฐานข้อมูลแล้ว
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="chat-messages" id="chat-messages">
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-state-content">
+                        <h3>เริ่มบทสนทนาของคุณ</h3>
+                        <p>เชื่อมต่อกับภูมิปัญญาของอากง ตั้งคำถามที่มีความหมาย และรับคำแนะนำที่ลึกซึ้ง</p>
+
+                        <div class="suggested-questions">
+                            <p class="suggestions-label">คำถามที่แนะนำในการเริ่มต้น:</p>
+                            <button class="suggestion-card" data-question="ช่วงเวลาที่ท่านภาคภูมิใจที่สุดในชีวิตคืออะไรครับ/ค่ะ">
+                                <span class="suggestion-icon">🌟</span>
+                                <span class="suggestion-text">ถามเกี่ยวกับช่วงเวลาที่ภาคภูมิใจที่สุด</span>
+                            </button>
+                            <button class="suggestion-card" data-question="ท่านมีคำแนะนำอะไรเกี่ยวกับการรับมือกับความล้มเหลวบ้างครับ/ค่ะ">
+                                <span class="suggestion-icon">💪</span>
+                                <span class="suggestion-text">ขอคำแนะนำเกี่ยวกับการเผชิญความล้มเหลว</span>
+                            </button>
+                            <button class="suggestion-card" data-question="คุณค่าอะไรบ้างที่ท่านหวังจะส่งต่อให้ครอบครัวของเราครับ/ค่ะ">
+                                <span class="suggestion-icon">🏛️</span>
+                                <span class="suggestion-text">ถามเกี่ยวกับคุณค่าของครอบครัว</span>
+                            </button>
+                            <button class="suggestion-card" data-question="ช่วยเล่าเรื่องราวในวัยเด็กที่หล่อหลอมให้ท่านเป็นเช่นนี้ให้ฟังหน่อยครับ/ค่ะ">
+                                <span class="suggestion-icon">📖</span>
+                                <span class="suggestion-text">ขอเรื่องราวในวัยเด็กที่หล่อหลอมชีวิต</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages will be inserted here -->
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <textarea
+                        id="message-input"
+                        class="message-input"
+                        placeholder="อยากคุยอะไรกับอากง"
+                        rows="1"
+                    ></textarea>
+                    <button class="send-button" id="send-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">คำถามของคุณจะไม่ถูกนำไปวิเคราะห์หรือเปิดเผย โปรดอย่ากังวล</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
